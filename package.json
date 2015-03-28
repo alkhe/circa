@@ -1,0 +1,31 @@
+{
+  "name": "circa",
+  "version": "0.0.1",
+  "description": "A superfast and future-proof boilerplate for the Circa stack.",
+  "main": "index.js",
+  "scripts": {
+    "test": ":"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://edge@github.com/edge/circa"
+  },
+  "keywords": [
+    "circa",
+    "socket.io",
+    "react",
+    "koa",
+    "srk",
+    "mongoose",
+    "gulp",
+    "boilerplate",
+    "build",
+    "stack"
+  ],
+  "author": "synchronous",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/edge/circa/issues"
+  },
+  "homepage": "https://github.com/edge/circa"
+}
