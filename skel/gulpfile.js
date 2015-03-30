@@ -3,8 +3,7 @@ var gulp = require('gulp'),
 	sourcemaps = require('gulp-sourcemaps'),
 	babel = require('gulp-babel'),
 	uglify = require('gulp-uglify'),
-	cssnext = require('gulp-cssnext'),
-	minify = require('gulp-minify-css');
+	cssnext = require('gulp-cssnext');
 
 var jsSrc = ['./client/js/**/*.js'],
 	jsDst = './public/js/app',
