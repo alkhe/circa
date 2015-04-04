@@ -1,6 +1,7 @@
 import React from '../react';
+import Flux from './alt';
 
-module.exports = React.createClass({
+export default React.createClass({
 	render: function() {
 		return <div>It works!</div>;
 	}

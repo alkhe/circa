@@ -1,2 +1,2 @@
-"use strict";var _interopRequire=function(e){return e&&e.__esModule?e["default"]:e},React=_interopRequire(require("../react"));module.exports=React.createClass({displayName:"exports",render:function(){return React.createElement("div",null,"It works!")}});
+"use strict";var _interopRequire=function(e){return e&&e.__esModule?e["default"]:e},React=_interopRequire(require("../react")),Flux=_interopRequire(require("./alt"));module.exports=React.createClass({displayName:"app",render:function(){return React.createElement("div",null,"It works!")}});
 //# sourceMappingURL=app.js.map
