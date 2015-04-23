@@ -3,7 +3,8 @@ var app = require('koa')(),
 	compress = require('koa-compress'),
 	condget = require('koa-conditional-get'),
 	etag = require('koa-etag'),
-	serve = require('koa-static');
+	serve = require('koa-static'),
+	io = require('socket.io')(app);
 
 app
 	.use(logger())

@@ -1,11 +1,12 @@
 var gulp = require('gulp'),
 	cached = require('gulp-cached'),
+	plumber = require('gulp-plumber'),
 	sourcemaps = require('gulp-sourcemaps'),
 	babel = require('gulp-babel'),
 	uglify = require('gulp-uglify'),
 	cssnext = require('gulp-cssnext');
 
-var jsSrc = ['./client/js/**/*.js'],
+var jsSrc = ['./client/js/**/*.js', './client/js/**/*.jsx'],
 	jsDst = './public/js/app',
 	cssSrc = './client/css/**/*.css',
 	cssDst = './public/css';
@@ -57,6 +58,7 @@ gulp.task('watch-dev', ['jsw-dev', 'cssw-dev'], function() {
  */
 gulp.task('js', function() {
 	gulp.src(jsSrc)
+		.pipe(plumber())
 		.pipe(cached('js'))
 		.pipe(sourcemaps.init())
 			.pipe(babel())
@@ -70,6 +72,7 @@ gulp.task('js', function() {
  */
 gulp.task('css', function() {
 	gulp.src(cssSrc)
+		.pipe(plumber())
 		.pipe(cached('css'))
 		.pipe(cssnext({ compress: true }))
 		.pipe(gulp.dest(cssDst));
@@ -80,6 +83,7 @@ gulp.task('css', function() {
  */
 gulp.task('js-dev', function() {
 	gulp.src(jsSrc)
+		.pipe(plumber())
 		.pipe(cached('js'))
 		.pipe(babel())
 		.pipe(gulp.dest(jsDst));
@@ -90,6 +94,7 @@ gulp.task('js-dev', function() {
  */
 gulp.task('css-dev', function() {
 	gulp.src(cssSrc)
+		.pipe(plumber())
 		.pipe(cached('css'))
 		.pipe(cssnext())
 		.pipe(gulp.dest(cssDst));
