@@ -4,6 +4,7 @@
 		"client",
 		"public",
 		"node_modules",
-		".git"
+		".git",
+		"gulpfile.js"
 	]
 }

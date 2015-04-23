@@ -1,0 +1,2 @@
+"use strict";var _interopRequire=function(e){return e&&e.__esModule?e["default"]:e},React=_interopRequire(require("../../react"));module.exports=React.createClass({displayName:"component",render:function(){return React.createElement("div",null,"It works!")}});
+//# sourceMappingURL=../views/component.js.map
