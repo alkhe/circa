@@ -1,6 +1,6 @@
 {
   "name": "circa",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "A superfast and future-proof boilerplate for the Circa stack.",
   "main": "index.js",
   "scripts": {

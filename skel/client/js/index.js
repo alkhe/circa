@@ -1,4 +1,4 @@
-System.config({	baseURL: '../js/' });
+System.config({	baseURL: './js/' });
 
 Promise.all(
 	['react', 'app/app'].map(x => System.import(x))
