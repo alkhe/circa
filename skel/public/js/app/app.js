@@ -1,2 +1,0 @@
-"use strict";var _interopRequire=function(e){return e&&e.__esModule?e["default"]:e},React=_interopRequire(require("react")),Flux=_interopRequire(require("./alt")),Component=_interopRequire(require("./views/component")),RouteHandler=require("react-router").RouteHandler;module.exports=React.createClass({displayName:"app",render:function(){return React.createElement("div",null,React.createElement(RouteHandler,null))}});
-//# sourceMappingURL=app.js.map

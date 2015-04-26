@@ -3,7 +3,9 @@
   "version": "0.0.1",
   "description": "__name__",
   "scripts": {
-    "dev": "NODE_ENV=development gulp & nodemon"
+    "pro": "NODE_ENV=development gulp pro & nodemon",
+    "map": "NODE_ENV=development gulp map & nodemon",
+    "dev": "NODE_ENV=development gulp dev & nodemon"
   },
   "dependencies": {
     "koa": "^0.19.1",

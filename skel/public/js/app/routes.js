@@ -1,2 +1,0 @@
-"use strict";var _interopRequire=function(e){return e&&e.__esModule?e["default"]:e},React=_interopRequire(require("react")),_reactRouter=require("react-router"),Router=_interopRequire(_reactRouter),Route=_reactRouter.Route,DefaultRoute=_reactRouter.DefaultRoute,App=_interopRequire(require("./app")),Component=_interopRequire(require("./views/component"));module.exports=React.createElement(Route,{handler:App,path:"/"},React.createElement(DefaultRoute,{name:"component",handler:Component}));
-//# sourceMappingURL=routes.js.map

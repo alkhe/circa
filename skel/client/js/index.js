@@ -7,3 +7,5 @@ Promise.all(
 		React.render(<Handler />, document.getElementById('__name__'));
 	});
 });
+
+System.import('app/io');

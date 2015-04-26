@@ -14,10 +14,19 @@ var jsSrc = './client/js/**/*.js',
 	htmlSrc = './client/html/*.jade',
 	htmlDst = './public/';
 
+gulp.task('default', ['pro']);
+
 /**
  * Compile and watch assets in production mode
  */
-gulp.task('default', ['compile', 'watch'], function() {
+gulp.task('pro', ['compile', 'watch'], function() {
+
+});
+
+/**
+ * Compile and watch assets in production mode with sourcemaps
+ */
+gulp.task('map', ['compile-map', 'watch-map'], function() {
 
 });
 
@@ -43,6 +52,20 @@ gulp.task('watch', ['jsw', 'cssw', 'htmlw'], function() {
 });
 
 /**
+ * Compile assets for production
+ */
+gulp.task('compile-map', ['js-map', 'css-map', 'html-map'], function() {
+
+});
+
+/**
+ * Compile assets on change for production
+ */
+gulp.task('watch-map', ['jsw-map', 'cssw-map', 'htmlw-map'], function() {
+
+});
+
+/**
  * Compile assets for development
  */
 gulp.task('compile-dev', ['js-dev', 'css-dev', 'html-dev'], function() {
@@ -63,10 +86,8 @@ gulp.task('js', function() {
 	gulp.src(jsSrc)
 		.pipe(plumber())
 		.pipe(cached('js'))
-		.pipe(sourcemaps.init())
-			.pipe(babel())
-			.pipe(uglify())
-		.pipe(sourcemaps.write('.'))
+		.pipe(babel())
+		.pipe(uglify())
 		.pipe(gulp.dest(jsDst));
 });
 
@@ -85,6 +106,42 @@ gulp.task('css', function() {
  * Compile Jade for production
  */
 gulp.task('html', function() {
+	gulp.src(htmlSrc)
+		.pipe(plumber())
+		.pipe(cached('html'))
+		.pipe(jade({ compileDebug: false }))
+		.pipe(gulp.dest(htmlDst));
+});
+
+/**
+ * Compile Javascript/JSX for production
+ */
+gulp.task('js-map', function() {
+	gulp.src(jsSrc)
+		.pipe(plumber())
+		.pipe(cached('js'))
+		.pipe(sourcemaps.init())
+			.pipe(babel())
+			.pipe(uglify())
+		.pipe(sourcemaps.write('.'))
+		.pipe(gulp.dest(jsDst));
+});
+
+/**
+ * Compile Stylus for production
+ */
+gulp.task('css-map', function() {
+	gulp.src(cssSrc)
+		.pipe(plumber())
+		.pipe(cached('css'))
+		.pipe(cssnext({ compress: true }))
+		.pipe(gulp.dest(cssDst));
+});
+
+/**
+ * Compile Jade for production
+ */
+gulp.task('html-map', function() {
 	gulp.src(htmlSrc)
 		.pipe(plumber())
 		.pipe(cached('html'))
@@ -138,12 +195,24 @@ gulp.task('htmlw', function() {
 	gulp.watch(htmlSrc, ['html']);
 });
 
+gulp.task('jsw-map', function() {
+	gulp.watch(jsSrc, ['js-map']);
+});
+
+gulp.task('cssw-map', function() {
+	gulp.watch(cssSrc, ['css-map']);
+});
+
+gulp.task('htmlw-map', function() {
+	gulp.watch(htmlSrc, ['html-map']);
+});
+
 gulp.task('jsw-dev', function() {
-	gulp.watch(jsSrc, ['js']);
+	gulp.watch(jsSrc, ['js-dev']);
 });
 
 gulp.task('cssw-dev', function() {
-	gulp.watch(cssSrc, ['css']);
+	gulp.watch(cssSrc, ['css-dev']);
 });
 
 gulp.task('htmlw-dev', function() {

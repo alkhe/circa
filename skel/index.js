@@ -3,8 +3,7 @@ var app = require('koa')(),
 	compress = require('koa-compress'),
 	condget = require('koa-conditional-get'),
 	etag = require('koa-etag'),
-	serve = require('koa-static'),
-	io = require('socket.io')(app);
+	serve = require('koa-static');
 
 app
 	.use(logger())
@@ -13,6 +12,10 @@ app
 	.use(etag())
 	.use(serve('public'));
 
-var server = app.listen(3000, function() {
+var server = require('http').createServer(app.callback());
+var io = require('socket.io')(server);
+
+module.exports = server.listen(3000, function() {});
+io.on('connection', function(socket) {
 
 });

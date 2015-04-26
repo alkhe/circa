@@ -1,4 +1,3 @@
-// const onChange = Symbol();
 const onChange = '__onChange';
 
 export default function(Store) {

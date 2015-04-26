@@ -1,1 +1,0 @@
-{"version":3,"sources":["alt.js"],"names":["_interopRequire","obj","__esModule","Alt","require","module","exports"],"mappings":"AAAA,YAEA,IAAIA,iBAAkB,SAAUC,GAAO,MAAOA,IAAOA,EAAIC,WAAaD,EAAI,WAAaA,GAFhFE,IAAGH,gBAAAI,QAAM,OAMhBC,QAAOC,QALQ,GAAIH","file":"alt.js","sourcesContent":["import Alt from 'alt';\nexport default new Alt();\n"],"sourceRoot":"/source/"}
