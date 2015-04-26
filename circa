@@ -1,0 +1,62 @@
+#!/usr/bin/env node
+
+var fs = require('fs-extra'),
+	path = require('path'),
+	execSync = require('child_process').execSync,
+	prompt = require('prompt'),
+	colors = require('colors');
+
+var populate = function(dir, find, replace) {
+	var children = fs.readdirSync(dir);
+	children.forEach(function(c) {
+		var old = path.join(dir, c);
+		if (c != 'node_modules') {
+			var now = old.replace(find, replace);
+			fs.renameSync(old, now);
+			if (fs.statSync(now).isDirectory()) {
+				populate(now, find, replace);
+			}
+			else {
+				fs.writeFileSync(now, fs.readFileSync(now, 'utf8').replace(find, replace));
+			}
+		}
+	});
+};
+
+const skel = 'skel';
+
+var name, dir;
+
+prompt.message = '';
+prompt.delimiter = '';
+prompt.start();
+
+prompt.get({
+	name: 'name',
+	description: 'Application Name'.blue,
+	required: true
+}, function(err, res) {
+	name = res.name;
+	prompt.get({
+		name: 'dir',
+		description: 'Directory'.blue,
+		default: name,
+		required: true
+	}, function(err, res) {
+		dir = res.dir;
+		try {
+			console.log('Copying...'.green);
+			fs.copySync(skel, dir);
+			fs.remove(path.join(dir, 'node_modules'));
+			console.log('Populating...'.green);
+			populate(dir, /__name__/g, name);
+			console.log('Installing...'.green);
+			execSync('cd ' + dir + ' && npm install', { stdio: 'ignore' });
+			console.log('Building...'.green);
+			execSync('cd ' + dir + ' && gulp compile', { stdio: 'ignore' });
+			console.log('Done.'.magenta);
+		} catch (err) {
+			console.log('Error: '.red + err);
+		}
+	});
+});

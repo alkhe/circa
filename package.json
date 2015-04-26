@@ -1,10 +1,15 @@
 {
   "name": "circa",
-  "version": "0.0.8",
+  "version": "0.1.0",
   "description": "A superfast and future-proof boilerplate for the Circa stack.",
-  "main": "index.js",
+  "main": "./circa",
+  "preferGlobal": true,
+  "bin": {
+    "circa": "./circa"
+  },
   "scripts": {
-    "test": ":"
+    "test": "echo $'myapp\n' | ./circa",
+    "clean": "rm -rf myapp"
   },
   "repository": {
     "type": "git",
@@ -27,5 +32,10 @@
   "bugs": {
     "url": "https://github.com/edge/circa/issues"
   },
-  "homepage": "https://github.com/edge/circa"
+  "homepage": "https://github.com/edge/circa",
+  "dependencies": {
+    "colors": "^1.0.3",
+    "fs-extra": "^0.18.2",
+    "prompt": "^0.2.14"
+  }
 }
