@@ -8,4 +8,4 @@ Promise.all(
 	});
 });
 
-System.import('app/io');
+System.import('app/socket');
