@@ -23,7 +23,7 @@ var populate = function(dir, find, replace) {
 	});
 };
 
-const skel = 'skel';
+const skel = path.join(__dirname, 'skel');
 
 var name, dir;
 

@@ -1,6 +1,6 @@
 {
   "name": "circa",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A superfast and future-proof boilerplate for the Circa stack.",
   "main": "./circa",
   "preferGlobal": true,
