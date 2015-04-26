@@ -6,6 +6,8 @@ require('./watch');
 require('./assetwatch');
 require('./asset');
 
+gulp.task('default', ['pro']);
+
 /**
  * Compile and watch assets in production mode
  */
