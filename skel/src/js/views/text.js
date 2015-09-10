@@ -5,7 +5,7 @@ import { update } from '../flux/actions';
 @connect(text => ({ text }))
 export default class extends React.Component {
 	update() {
-		this.dispatch(update(React.findDOMNode(this.refs.text).value));
+		this.dispatch(update.text(React.findDOMNode(this.refs.text).value));
 	}
 	render() {
 		return (
