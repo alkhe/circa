@@ -1,21 +1,26 @@
-var app = require('koa')(),
-	logger = require('koa-logger'),
-	compress = require('koa-compress'),
-	condget = require('koa-conditional-get'),
-	etag = require('koa-etag'),
-	serve = require('koa-static');
+import express from 'express';
+import compression from 'compression';
+import webpack from 'webpack';
+import wdev from 'webpack-dev-middleware';
+import whot from 'webpack-hot-middleware';
+import wconf from './webpack.config.babel';
 
-app
-	.use(logger())
-	.use(compress())
-	.use(condget())
-	.use(etag())
-	.use(serve('public'));
+let app = express();
+let wcompiler = webpack(wconf);
 
-var server = require('http').createServer(app.callback());
-var io = require('socket.io')(server);
+app.use(wdev(wcompiler, {
+		noInfo: true,
+		publicPath: wconf.output.publicPath
+	}))
+	.use(whot(wcompiler))
+	.use(compression())
+	.use(express.static('./public'));
 
-module.exports = server.listen(3000, function() {});
-io.on('connection', function(socket) {
-
+const port = process.env.PORT || 80;
+app.listen(port, 'localhost', err => {
+	if (err) {
+		console.log(err);
+		return;
+	}
+	console.log('listening on http://localhost:3000');
 });
