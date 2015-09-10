@@ -1,18 +1,18 @@
 import React from 'react';
-import { Actions, Stores } from '../hub';
-import Symbiosis from '../mixins/symbiosis-mixin';
+import { connect } from 'fluxette-react';
+import { update } from '../flux/actions';
 
-export default React.createClass({
-	mixins: [Symbiosis(Stores.Text)],
+@connect(text => ({ text }))
+export default class extends React.Component {
 	update() {
-		Actions.Text.update(React.findDOMNode(this.refs.text).value);
-	},
+		this.dispatch(update(React.findDOMNode(this.refs.text).value));
+	}
 	render() {
 		return (
 			<div>
-				<input onChange={this.update} ref='text' />
-				<div>{this.state.data}</div>
+				<input onChange={ ::this.update } ref='text' />
+				<div>{ this.state.text }</div>
 			</div>
 		);
 	}
-});
+}

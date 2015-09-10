@@ -1,4 +1,6 @@
 import React from 'react';
-import routes from './routes';
+import { history } from 'react-router/lib/BrowserHistory';
+import Root from './root';
+import flux from './flux';
 
-React.render(routes, document.getElementById('__name__'));
+React.render(<Root flux={ flux } history={ history } />, document.getElementById('__name__'));
