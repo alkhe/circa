@@ -7,6 +7,29 @@ let app = express();
 if (production) {
 	console.log('[pro]');
 	app.use(require('compression')());
+
+	// let React = require('react'),
+	// 	RDOM = require('react-dom'),
+	// 	{ RoutingContext, match } = require('react-router'),
+	// 	createLocation = require('history/lib/createLocation'),
+	// 	Flux = require('fluxette'),
+	// 	reducer = require('./src/js/flux/reducer'),
+	// 	Routes = require('./src/js/routes'),
+	// 	{ Context } = require('fluxette-react');
+	//
+	// app.use('/', (req, res) => {
+	// 	let flux = Flux(reducer);
+	// 	let location = createLocation(req.url);
+	// 	match({ routes: Routes, location }, (err, redir, initial) => {
+	// 		res.send(
+	// 			RDOM.renderToString(
+	// 				<Context flux={ flux }>
+	// 					<RoutingContext { ...initial } />
+	// 				</Context>
+	// 			)
+	// 		);
+	// 	})
+	// });
 }
 else {
 	console.log('[dev]');
