@@ -1,6 +1,16 @@
 import React from 'react';
-import { history } from 'react-router/lib/BrowserHistory';
-import Root from './root';
-import flux from './flux';
+import RDOM from 'react-dom';
 
-React.render(<Root flux={ flux } history={ history } />, document.getElementById('__name__'));
+import { createHistory } from 'history';
+import Routes from './routes';
+
+import Flux from 'fluxette';
+import reducer from './flux/reducer';
+import { Context } from 'fluxette-react';
+
+RDOM.render(
+	<Context flux={ Flux(reducer) }>
+		{ () => <Routes history={ createHistory() } /> }
+	</Context>,
+	document.getElementById('__name__')
+);

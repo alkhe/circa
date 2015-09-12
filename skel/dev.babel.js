@@ -1,13 +1,14 @@
 import w from 'webpack';
+import path from 'path';
 
-module.exports = {
+export default {
 	devtool: 'eval',
 	entry: [
 		'webpack-hot-middleware/client',
 		'./src/js'
 	],
 	output: {
-		path: '/public/',
+		path: path.join(__dirname, 'dist'),
 		filename: 'bundle.js',
 		publicPath: '/lib/'
 	},
@@ -17,9 +18,9 @@ module.exports = {
 		new w.optimize.OccurenceOrderPlugin()
 	],
 	module: {
-		loaders: [{ test: /\.js$/, loaders: ['babel-loader'] }]
+		loaders: [{ test: /\.js$/, loader: 'babel-loader' }]
 	},
-	resolve: {
-		extensions: ['', '.js']
+	resolveLoader: {
+		root: path.join(__dirname, 'node_modules')
 	}
 };

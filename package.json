@@ -35,6 +35,7 @@
   },
   "homepage": "https://github.com/edge/circa",
   "dependencies": {
+    "babel-core": "^5.8.24",
     "colors": "^1.1.2",
     "fs-extra": "^0.24.0",
     "prompt": "^0.2.14"

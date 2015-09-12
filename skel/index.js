@@ -1,26 +1,33 @@
 import express from 'express';
-import compression from 'compression';
 import webpack from 'webpack';
-import wdev from 'webpack-dev-middleware';
-import whot from 'webpack-hot-middleware';
-import wconf from './webpack.config.babel';
 
+let production = process.env.NODE_ENV === 'production';
 let app = express();
-let wcompiler = webpack(wconf);
 
-app.use(wdev(wcompiler, {
+if (production) {
+	console.log('[pro]');
+	app.use(require('compression')());
+}
+else {
+	console.log('[dev]');
+	let config = require('./dev.babel'),
+		compiler = webpack(config),
+		dev = require('webpack-dev-middleware'),
+		hot = require('webpack-hot-middleware');
+
+	app.use(dev(compiler, {
 		noInfo: true,
-		publicPath: wconf.output.publicPath
-	}))
-	.use(whot(wcompiler))
-	.use(compression())
-	.use(express.static('./public'));
+		publicPath: config.output.publicPath
+	})).use(hot(compiler));
+}
+
+app.use(express.static('./public'));
 
 const port = process.env.PORT || 80;
+
 app.listen(port, 'localhost', err => {
 	if (err) {
-		console.log(err);
-		return;
+		return console.err(err);
 	}
-	console.log('listening on http://localhost:3000');
+	console.log(`listening on http://localhost:${ port }`);
 });
