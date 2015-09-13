@@ -1,4 +1,5 @@
 import fs from 'fs-extra';
+import path from 'path';
 
 // replace all instances of `find` in `dir` with `replace`
 let replaceIn = (dir, find, replace) => {
