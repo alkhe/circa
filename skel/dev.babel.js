@@ -19,8 +19,5 @@ export default {
 	],
 	module: {
 		loaders: [{ test: /\.js$/, loader: 'babel-loader' }]
-	},
-	resolveLoader: {
-		root: path.join(__dirname, 'node_modules')
 	}
 };

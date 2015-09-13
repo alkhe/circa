@@ -1,4 +1,10 @@
 #!/usr/bin/env node
 
-require('babel-core/register');
-require('./src/scaffold');
+var arg = process.argv[2];
+if (arg === '-v' || arg === '--version') {
+	console.log(require('./package.json').version)
+}
+else {
+	require('babel-core/register');
+	require('./src/scaffold');
+}
