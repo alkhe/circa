@@ -13,7 +13,7 @@ import prompt from 'prompt';
 import 'colors';
 import replaceIn from './replaceIn';
 
-const skel = path.join(__dirname, 'skel');
+const skel = path.resolve(__dirname, '../skel');
 
 prompt.message = '';
 prompt.delimiter = '';
