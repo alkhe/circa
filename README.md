@@ -25,6 +25,11 @@ $ circa
 
 ## Deploying
 
+Install
+```sh
+npm i
+```
+
 Production
 ```sh
 npm run build

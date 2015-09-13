@@ -1,4 +1,4 @@
-	import gulp from 'gulp';
+import gulp from 'gulp';
 import babel from 'gulp-babel';
 
 gulp.task('build', () =>

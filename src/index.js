@@ -8,7 +8,6 @@ if (arg === '-v' || arg === '--version') {
 
 import { copySync as copy, remove } from 'fs-extra';
 import path from 'path';
-import { execSync as exec } from 'child_process';
 import prompt from 'prompt';
 import 'colors';
 import replaceIn from './replaceIn';
@@ -22,15 +21,13 @@ prompt.start();
 prompt.get({ name: 'name', description: 'Application Name'.blue, required: true }, (err, res) => {
 	let { name } = res;
 	prompt.get({ name: 'dir', description: 'Directory'.blue, default: name, required: true }, (err, res) => {
-		let { dir } = res;
+		let dir = path.resolve(res.dir);
 		try {
 			log('Copying...'.green);
 			copy(skel, dir);
 			remove(path.join(dir, 'node_modules'));
 			log('Populating...'.green);
 			replaceIn(dir, /__name__/g, name);
-			log('Installing...'.green);
-			exec(`cd ${ dir } && npm install`, { stdio: 'ignore' });
 			log('Done.'.magenta);
 		} catch (err) {
 			log('Error: '.red + err);
