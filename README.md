@@ -2,7 +2,7 @@
 
 Circa (/ˈsərkə/) is a batteries-included boilerplate for futuristic web development.
 
-It utilizes React and Flux for client-side applications, with Socket.IO for high-speed bidirectional communication. Circa comes with a gulp and webpack build system with production and development configurations, complete with babel (6to5), minification, hot module reloading, and isomorphic rendering.
+It utilizes React and Flux for client-side applications, with Socket.IO for high-speed bidirectional communication. Circa comes with a gulp and webpack build system with production and development configurations, complete with babel (6to5), minification, hot module reloading, graceful error reporting, and isomorphic rendering.
 
 ## Installing
 

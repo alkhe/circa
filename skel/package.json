@@ -4,19 +4,19 @@
   "description": "__name__",
   "scripts": {
     "start": "NODE_ENV=production babel-node .",
-    "build": "gulp html && NODE_ENV=production webpack -p --config ./pro.babel.js",
+    "build": "NODE_ENV=production webpack -p --config ./pro.babel.js",
     "dev": "NODE_ENV=development babel-node ."
   },
   "devDependencies": {
     "babel-core": "^5.8.24",
     "babel-loader": "^5.3.2",
     "babel-plugin-react-transform": "^1.0.3",
+    "delicate-error-reporter": "0.0.6",
     "gulp": "^3.9.0",
     "gulp-jade": "^1.1.0",
     "history": "^1.9.0",
     "react-transform-catch-errors": "^0.1.2",
     "react-transform-webpack-hmr": "^0.1.4",
-    "redbox-react": "^1.0.3",
     "webpack": "^1.12.1",
     "webpack-dev-middleware": "^1.2.0",
     "webpack-hot-middleware": "^2.0.0"

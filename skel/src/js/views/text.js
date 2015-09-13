@@ -3,7 +3,7 @@ import { connect } from 'fluxette-react';
 import { update } from '../flux/actions';
 
 @connect(text => ({ text }))
-export default class extends React.Component {
+export default class Text extends React.Component {
 	update() {
 		this.dispatch(update.text(this.refs.text.value));
 	}
