@@ -1,3 +1,11 @@
+let log = ::console.log;
+
+let [,,arg] = process.argv;
+if (arg === '-v' || arg === '--version') {
+	console.log(require('./package.json').version);
+	process.exit(0);
+}
+
 import { copySync as copy, remove } from 'fs-extra';
 import path from 'path';
 import { execSync as exec } from 'child_process';
@@ -5,7 +13,6 @@ import prompt from 'prompt';
 import 'colors';
 import replaceIn from './replaceIn';
 
-let log = ::console.log;
 const skel = path.join(__dirname, 'skel');
 
 prompt.message = '';

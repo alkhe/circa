@@ -8,7 +8,7 @@
     "circa": "./circa"
   },
   "scripts": {
-    "test": "echo $'myapp\n' | ./circa",
+    "build": "gulp build",
     "clean": "rm -rf myapp"
   },
   "repository": {
@@ -35,9 +35,13 @@
   },
   "homepage": "https://github.com/edge/circa",
   "dependencies": {
-    "babel-core": "^5.8.24",
     "colors": "^1.1.2",
     "fs-extra": "^0.24.0",
     "prompt": "^0.2.14"
+  },
+  "devDependencies": {
+    "babel-core": "^5.8.24",
+    "gulp": "^3.9.0",
+    "gulp-babel": "^5.2.1"
   }
 }
